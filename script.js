@@ -81,9 +81,9 @@ function setupNavbarScroll() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
         if (scrollTop > 100) {
-            navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+            navbar.style.boxShadow = 'rgba(0, 0, 0, 0.04) 0 2px 6px 0, rgba(0, 0, 0, 0.08) 0 4px 12px 0';
         } else {
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            navbar.style.boxShadow = 'none';
         }
 
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
@@ -107,11 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.borderColor = 'var(--neon-blue)';
+            this.style.borderColor = 'transparent';
         });
 
         card.addEventListener('mouseleave', function() {
-            this.style.borderColor = 'rgba(0, 212, 255, 0.1)';
+            this.style.borderColor = 'transparent';
         });
     });
 
@@ -119,11 +119,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactCards = document.querySelectorAll('.contact-card');
     contactCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.borderColor = 'var(--neon-blue)';
+            this.style.borderColor = 'var(--ink)';
         });
 
         card.addEventListener('mouseleave', function() {
-            this.style.borderColor = 'rgba(0, 212, 255, 0.1)';
+            this.style.borderColor = 'var(--hairline)';
         });
     });
 });
@@ -304,9 +304,9 @@ function copyToClipboard(text) {
 }
 
 // ==================== Console Welcome Message ====================
-console.log('%c🎮 Selamat datang di SyaSyah! 🎮', 'color: #00d4ff; font-size: 16px; font-weight: bold;');
-console.log('%cPremium Computer Accessories', 'color: #a78bfa; font-size: 12px;');
-console.log('%cDesigned with ❤️ for Gaming & Professional Use', 'color: #00d4ff; font-size: 11px;');
+console.log('%cSelamat datang di SyaSyah!', 'color: #38bdf8; font-size: 16px; font-weight: bold;');
+console.log('%cUmamusume build recommendations', 'color: #f8fafc; font-size: 12px;');
+console.log('%cDesigned for the Indonesian Umamusume community', 'color: #6a6a6a; font-size: 11px;');
 
                          // href function
 

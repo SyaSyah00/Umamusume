@@ -16,14 +16,38 @@ async function loadPartials() {
 
     await Promise.all(Array.from(includeElements).map(async element => {
         const file = element.getAttribute('data-include');
-        const response = await fetch(file);
+        const html = await fetchPartial(file);
 
-        if (!response.ok) {
-            throw new Error(`Gagal memuat ${file}`);
+        if (!html) {
+            console.error(`Gagal memuat ${file}`);
+            return;
         }
 
-        element.outerHTML = await response.text();
+        element.outerHTML = html;
     }));
+}
+
+async function fetchPartial(file) {
+    const normalizedFile = file.replace('../', '');
+    const candidates = [
+        file,
+        `/${normalizedFile}`,
+        `./${normalizedFile}`
+    ];
+
+    for (const candidate of candidates) {
+        try {
+            const response = await fetch(candidate);
+
+            if (response.ok) {
+                return await response.text();
+            }
+        } catch (error) {
+            console.warn(`Tidak bisa memuat partial dari ${candidate}`, error);
+        }
+    }
+
+    return '';
 }
 
 function setupSharedNavigationLinks() {

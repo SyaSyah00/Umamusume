@@ -46,8 +46,6 @@ img {
 .container {
     max-width: 1280px;
 }
-
-/* ==================== Navbar ==================== */
 .navbar-custom {
     min-height: 68px;
     background: rgba(7, 17, 31, 0.78);
@@ -151,8 +149,6 @@ img {
     line-height: 1;
     letter-spacing: 0.32px;
 }
-
-/* ==================== Hero Section ==================== */
 .hero-section {
     min-height: calc(100vh - 68px);
     margin-top: 68px;
@@ -246,8 +242,6 @@ img {
         transform: translateY(0);
     }
 }
-
-/* ==================== Sections ==================== */
 .about-section,
 .products-section {
     padding: 64px 0;
@@ -341,8 +335,6 @@ img {
     font-size: 14px;
     font-weight: 500;
 }
-
-/* ==================== Products Section ==================== */
 .products-section {
     background: var(--canvas);
 }
@@ -433,8 +425,6 @@ img {
     font-weight: 400;
     line-height: 1.2;
 }
-
-/* ==================== Footer ==================== */
 .footer-section {
     margin-top: 0;
     padding: 48px 0 24px;
@@ -531,8 +521,6 @@ img {
 .text-danger {
     color: var(--primary) !important;
 }
-
-/* ==================== Toast + Shared Animation ==================== */
 .toast-notification {
     position: fixed;
     right: 24px;
@@ -564,8 +552,6 @@ img {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* ==================== Legacy Detail Page Helpers ==================== */
 .ranking-container {
     display: flex;
     flex-direction: column;
@@ -590,8 +576,6 @@ img {
 .contact-icon {
     color: var(--primary);
 }
-
-/* ==================== Responsive Design ==================== */
 @media (max-width: 991.98px) {
     .navbar-custom .navbar-collapse {
         margin-top: 14px;
@@ -681,3 +665,4 @@ img {
         left: 16px;
     }
 }
+

@@ -272,7 +272,6 @@ document.addEventListener('partialsLoaded', function() {
         });
     });
 
-    // Contact card hover effects
     const contactCards = document.querySelectorAll('.contact-card');
     contactCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -285,7 +284,6 @@ document.addEventListener('partialsLoaded', function() {
     });
 });
 
-// ==================== Active Navigation Link ====================
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -307,7 +305,6 @@ window.addEventListener('scroll', function() {
     });
 });
 
-// ==================== Count Up Animation ====================
 function countUp(element, target, duration = 2000) {
     let start = 0;
     const increment = target / (duration / 16);
@@ -323,7 +320,6 @@ function countUp(element, target, duration = 2000) {
     }, 16);
 }
 
-// ==================== Mobile Menu ====================
 document.addEventListener('partialsLoaded', function() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
@@ -335,9 +331,7 @@ document.addEventListener('partialsLoaded', function() {
     }
 });
 
-// ==================== Smooth Scroll Behavior ====================
 window.addEventListener('load', function() {
-    // Add initial animations to hero content
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
         const fadeInUpElements = heroContent.querySelectorAll('.fade-in-up > *');
@@ -347,7 +341,6 @@ window.addEventListener('load', function() {
     }
 });
 
-// ==================== Form Validation (Optional) ====================
 function validateForm(formData) {
     if (!formData.name || formData.name.trim() === '') {
         console.error('Nama harus diisi');
@@ -369,7 +362,6 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// ==================== Keyboard Navigation ====================
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         const navbarCollapse = document.querySelector('.navbar-collapse');
@@ -379,15 +371,12 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// ==================== Performance Optimization ====================
-// Lazy load images
 document.addEventListener('partialsLoaded', function() {
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    // Images are already loaded, but this structure is ready for lazy loading
                     observer.unobserve(img);
                 }
             });
@@ -397,8 +386,6 @@ document.addEventListener('partialsLoaded', function() {
     }
 });
 
-// ==================== Accessibility Improvements ====================
-// Add focus styles for keyboard navigation
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Tab') {
         document.body.classList.add('keyboard-nav');
@@ -409,29 +396,23 @@ document.addEventListener('mousedown', function() {
     document.body.classList.remove('keyboard-nav');
 });
 
-// ==================== Dynamic Content Loading ====================
 function loadMoreProducts() {
-    // Placeholder for loading more products
     console.log('Loading more products...');
     showToastNotification();
 }
 
-// ==================== Social Media Links ====================
 document.addEventListener('partialsLoaded', function() {
     const socialLinks = document.querySelectorAll('.social-link');
     socialLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            // Add your social media links here
             const title = this.querySelector('i').className;
             console.log(`Mengarahkan ke ${title}...`);
         });
     });
 });
 
-// ==================== Contact Links ====================
 document.addEventListener('partialsLoaded', function() {
-    // Make contact info clickable
     const contactCards = document.querySelectorAll('.contact-card');
     
     contactCards.forEach(card => {
@@ -439,13 +420,10 @@ document.addEventListener('partialsLoaded', function() {
         card.addEventListener('click', function() {
             const text = this.textContent;
             if (text.includes('Alamat')) {
-                // Open maps
                 window.open('https://maps.google.com/?q=Jakarta', '_blank');
             } else if (text.includes('Telepon')) {
-                // Copy phone to clipboard
                 copyToClipboard('+62 21 1234 5678');
             } else if (text.includes('Email')) {
-                // Open email
                 window.location.href = 'mailto:info@syasyah.com';
             }
         });
@@ -460,13 +438,11 @@ function copyToClipboard(text) {
     });
 }
 
-// ==================== Console Welcome Message ====================
 console.log('%cSelamat datang di SyaSyah!', 'color: #38bdf8; font-size: 16px; font-weight: bold;');
 console.log('%cUmamusume build recommendations', 'color: #f8fafc; font-size: 12px;');
 console.log('%cDesigned for the Indonesian Umamusume community', 'color: #6a6a6a; font-size: 11px;');
 
-                         // href function
-
+            
 document.querySelectorAll(".build-link").forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();

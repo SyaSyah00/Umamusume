@@ -47,6 +47,96 @@ async function fetchPartial(file) {
         }
     }
 
+    return getPartialFallback(file);
+}
+
+function getPartialFallback(file) {
+    if (file.includes('header.html')) {
+        return `
+<nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#home">
+            <i class="fas fa-horse-head"></i> SyaSyah
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-house"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-flag-checkered"></i> About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#products"><i class="fas fa-star"></i> Builds <span class="nav-new">NEW</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>`;
+    }
+
+    if (file.includes('footer.html')) {
+        return `
+<footer class="footer-section">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <h5 class="fw-bold mb-3"><i class="fas fa-horse"></i> Umamusume</h5>
+                <p class="small text-muted">Join the Umamusume Pretty Derby fan community and enjoy the amazing racing adventures with your favorite characters.</p>
+            </div>
+            <div class="col-md-3">
+                <h5 class="fw-bold mb-3">Navigation</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Game</a></li>
+                    <li><a href="#products">Characters</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="fw-bold mb-3">Follow Us</h5>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link" title="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h5 class="fw-bold mb-3">Game Information</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="https://store.steampowered.com/app/3224770/Umamusume_Pretty_Derby/">Download Game</a></li>
+                    <li><a href="#">Player Guide</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="border-secondary">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="credit-section mb-3">
+                    <h6 class="fw-bold text-white mb-2">
+                        <i class="fas fa-crown text-warning me-2"></i>
+                        Umamusume Pretty Derby
+                    </h6>
+                    <p class="small text-light mb-1"><strong>Developer:</strong> Cygames, Co., Ltd.</p>
+                    <p class="small text-light mb-1"><strong>Publisher:</strong> Cygames</p>
+                    <p class="small text-light mb-1"><strong>Platform:</strong> iOS, Android, PC</p>
+                    <p class="small text-light mb-2"><strong>Genre:</strong> Simulation, Racing, RPG</p>
+                </div>
+                <div class="disclaimer-section">
+                    <div class="fw-bold text-white mb-2">
+                        <div class="credit-section mb-3">
+                            <p class="small text-light mb-1">&copy; 2024 Cygames, Co., Ltd. All Rights Reserved.</p>
+                            <p class="small text-light mb-1">Umamusume Pretty Derby is a trademark of Cygames, Co., Ltd.</p>
+                            <p class="small text-light mb-1">This fan website is not affiliated with or endorsed by Cygames.</p>
+                            <p class="small text-light mb-1">Made with <i class="fas fa-heart text-danger"></i> for the Indonesian Umamusume community</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>`;
+    }
+
     return '';
 }
 

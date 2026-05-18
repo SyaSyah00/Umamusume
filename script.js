@@ -1,10 +1,51 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadPartials();
+    setupSharedNavigationLinks();
+
     observeElements();
 
     setupSmoothScroll();
 
     setupNavbarScroll();
+
+    document.dispatchEvent(new Event('partialsLoaded'));
 });
+
+async function loadPartials() {
+    const includeElements = document.querySelectorAll('[data-include]');
+
+    await Promise.all(Array.from(includeElements).map(async element => {
+        const file = element.getAttribute('data-include');
+        const response = await fetch(file);
+
+        if (!response.ok) {
+            throw new Error(`Gagal memuat ${file}`);
+        }
+
+        element.outerHTML = await response.text();
+    }));
+}
+
+function setupSharedNavigationLinks() {
+    const isNestedPage = window.location.pathname.includes('/HTML%20uma/') || window.location.pathname.includes('/HTML uma/');
+
+    if (!isNestedPage) return;
+
+    const pagePrefix = '../index.html';
+    const sectionLinks = {
+        '#home': `${pagePrefix}#home`,
+        '#about': `${pagePrefix}#about`,
+        '#products': `${pagePrefix}#products`
+    };
+
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+
+        if (sectionLinks[href]) {
+            link.setAttribute('href', sectionLinks[href]);
+        }
+    });
+}
 
 function observeElements() {
     const observerOptions = {
@@ -75,6 +116,8 @@ function setupSmoothScroll() {
 
 function setupNavbarScroll() {
     const navbar = document.querySelector('.navbar-custom');
+    if (!navbar) return;
+
     let lastScrollTop = 0;
 
     window.addEventListener('scroll', function() {
@@ -103,7 +146,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('partialsLoaded', function() {
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -167,7 +210,7 @@ function countUp(element, target, duration = 2000) {
 }
 
 // ==================== Mobile Menu ====================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('partialsLoaded', function() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
 
@@ -224,7 +267,7 @@ document.addEventListener('keydown', function(event) {
 
 // ==================== Performance Optimization ====================
 // Lazy load images
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('partialsLoaded', function() {
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -260,7 +303,7 @@ function loadMoreProducts() {
 }
 
 // ==================== Social Media Links ====================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('partialsLoaded', function() {
     const socialLinks = document.querySelectorAll('.social-link');
     socialLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -273,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ==================== Contact Links ====================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('partialsLoaded', function() {
     // Make contact info clickable
     const contactCards = document.querySelectorAll('.contact-card');
     
